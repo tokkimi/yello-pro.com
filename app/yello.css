@@ -60,6 +60,21 @@ html,body,.yello-site,.yello-site main{background:#fff!important}.yl-device-stor
 @media(prefers-reduced-motion:reduce){.tools-dialog[open]{animation:none}.tools-dialog .tools-grid>button,.yello-site .yl-btn,.yello-site .yl-btn:before{transition:none}.yello-site .yl-btn:before{display:none}.yl-visit-visual img{animation:none;transform:none}}
 
 /* Solar glass: original material treatment, with an opaque accessible fallback. */
+.floating-orb{touch-action:manipulation;pointer-events:auto;isolation:isolate}
+.floating-orb>span{pointer-events:none}
+@media(max-width:900px){
+ .workspace :is(input,textarea,select),.tools-dialog input,.app-dialog :is(input,textarea,select){font-size:16px!important;max-width:100%;box-sizing:border-box}
+ .workspace :is(.workspace-main,.workspace-content,.panel,.module-centre,.form-grid,.module-section-heading){min-width:0;max-width:100%;box-sizing:border-box}
+ .workspace :is(.module-actions,.button-row,.form-actions){flex-wrap:wrap}
+ .workspace :is(.module-section-heading,.page-heading){flex-wrap:wrap;gap:16px}
+ .workspace :is(h1,h2,h3,.module-actions button,.tools-grid button){overflow-wrap:anywhere}
+ .workspace .tools-dialog{width:calc(100% - 24px);max-width:760px;max-height:calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;margin:auto!important;inset:0!important;box-sizing:border-box}
+ .tools-content{min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+ .tools-dialog>header,.tools-dialog>.tools-search{flex-shrink:0}
+ .workspace .app-dialog{max-width:calc(100% - 20px);max-height:calc(100dvh - 24px);box-sizing:border-box}
+ .workspace .workspace-topbar{min-width:0}.workspace .workspace-home{min-width:0}
+}
+@media(max-width:360px){.tools-dialog .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.workspace .form-grid{grid-template-columns:minmax(0,1fr)}}
 .yello-site .yl-btn{
  border:1px solid #ffffffd9;border-radius:999px;min-height:48px;
  background:linear-gradient(160deg,#fff,#f4f5f6);color:#172b3a;
