@@ -11,7 +11,7 @@ const groups=[
  {name:'Terrain',ids:['visits','timesheets','dailyLogs']},
  {name:'Documents & finances',ids:['quotes','catalogue','priceRequests','purchaseOrders','invoices','expenses','suppliers','accounting','documents']},
  {name:'Équipe & échanges',ids:['messages','contacts','partners','team','assistant']},
- {name:'Entreprise & abonnement',ids:['settings','subscription','platform','seo']}
+ {name:'Entreprise & abonnement',ids:['settings','subscription','profile','platform','seo']}
 ];
 /** The same dialog serves quick actions and the complete menu, on desktop and phone. */
 export default function MobileTabbar({role,view,go,start,items,menuOpen,onMenuChange,onLogout}:Props){
