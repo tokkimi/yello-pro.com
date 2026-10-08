@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+test-results/
+.sites-runtime/
+.owner-access.txt
+!.env.example
+
+.vercel
+.env*

@@ -1,0 +1,7 @@
+// IndexedDB preserves binary media without the localStorage size limit.
+export async function mediaStore<T>(key:string,value?:T,remove=false):Promise<T|undefined>{
+ const database=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('yello-pro-media',1);r.onupgradeneeded=()=>r.result.createObjectStore('media');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});
+ try{return await new Promise<T|undefined>((resolve,reject)=>{const tx=database.transaction('media',value!==undefined||remove?'readwrite':'readonly');const store=tx.objectStore('media');const request=remove?store.delete(key):value!==undefined?store.put(value,key):store.get(key);let result:T|undefined;request.onsuccess=()=>{result=value!==undefined?value:request.result};tx.oncomplete=()=>resolve(result);tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}finally{database.close()}
+}
+
+export async function mediaKeys(prefix:string):Promise<string[]>{const database=await new Promise<IDBDatabase>((resolve,reject)=>{const r=indexedDB.open('yello-pro-media',1);r.onupgradeneeded=()=>r.result.createObjectStore('media');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});try{return await new Promise((resolve,reject)=>{const r=database.transaction('media').objectStore('media').getAllKeys();r.onsuccess=()=>resolve(r.result.map(String).filter(k=>k.startsWith(prefix)));r.onerror=()=>reject(r.error)})}finally{database.close()}}

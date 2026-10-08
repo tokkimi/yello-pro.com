@@ -1,0 +1,6 @@
+import 'fake-indexeddb/auto';
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mediaStore,mediaKeys} from '../lib/local-media';
+test('binary audio survives database close and reopen without data loss',async()=>{const key='voice-test';const blob=new Blob(['audio-content'],{type:'audio/webm'});await mediaStore(key,{blob,transcript:'Cuisine',elapsed:5});const restored=await mediaStore<{blob:Blob;transcript:string}>(key);assert.equal(await restored!.blob.text(),'audio-content');assert.equal(restored!.transcript,'Cuisine');await mediaStore(key,undefined,true);assert.equal(await mediaStore(key),undefined)});
+test('outbox lists only the current user and retains failed uploads until explicit acknowledgement',async()=>{await mediaStore('outbox-userA-one',{bytes:new Uint8Array([1,2,3])});await mediaStore('outbox-userB-one',{bytes:new Uint8Array([4])});assert.deepEqual(await mediaKeys('outbox-userA-'),['outbox-userA-one']);assert(await mediaStore('outbox-userA-one'));await mediaStore('outbox-userA-one',undefined,true);assert.deepEqual(await mediaKeys('outbox-userA-'),[]);assert(await mediaStore('outbox-userB-one'));await mediaStore('outbox-userB-one',undefined,true)});

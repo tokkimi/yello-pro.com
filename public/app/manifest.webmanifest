@@ -1,0 +1,23 @@
+{
+  "id": "/admin",
+  "name": "Yello Pro — Gestion",
+  "short_name": "Yello Pro",
+  "description": "Espace de gestion de Yello Pro : visites, devis, projets et factures.",
+  "lang": "fr-CA",
+  "start_url": "/admin",
+  "scope": "/admin",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {"src": "/app/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "/app/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "/app/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Commencer une visite", "short_name": "Visite", "url": "/admin?nouveau=visit", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Créer un devis", "short_name": "Devis", "url": "/admin?nouveau=quote", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Nouvelle facture", "short_name": "Facture", "url": "/admin?nouveau=invoice", "icons": [{"src": "/app/icon-192.png", "sizes": "192x192"}]}
+  ]
+}

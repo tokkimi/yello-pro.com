@@ -1,0 +1,316 @@
+{
+  "updated": "2026-10-08",
+  "title": "MG Pro — suivi des améliorations",
+  "notice": "Lot du 8 octobre (suite) : en plus de la chaîne fournisseur, du budget, des réglages, des notifications, du portail client, de la carte et du répertoire, ajout de la vue entreprise Fournisseurs & coûts, des dossiers de fichiers système, de la modale de contact à cinq types, des sources de tâches, de l’assistant et des routines, du Gantt interactif, du pointage et de la clôture des heures, et des adresses URL par rubrique. 73 tests et compilation réussis ; parcours vérifiés à 320, 390, 768 et 1440 px. Les outils MG Pro de visite, voix, photos, carnet et plans sont conservés tels quels.",
+  "modules": [
+    {
+      "id": 1,
+      "title": "Navigation, présentation et mobile",
+      "priority": "P0",
+      "status": "À revalider",
+      "items": [
+        "Garder un fond blanc, des accents verts, une typographie compacte et une hiérarchie lisible ; confronter les graphiques et profils aux composants fournis.",
+        "Contrôler chaque onglet projet : uniquement ses outils, sans répétition des phases, tâches et documents dans les autres onglets.",
+        "Vérifier marges, champs destinataire/copie, cartes client/projet, montants PDF, boutons Créer, modales et menu latéral défilable.",
+        "Contrôler à 320, 375, 390, 430, 768 et 1440 px : clavier, fermeture, listes longues, libellés longs, absence de chevauchement et de coupure.",
+        "Prévoir pagination, états vides, chargement, erreurs, recherche et accès clavier pour les listes volumineuses."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Clients et contacts",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Répertoire unifié livré (quatre familles, doublons, import/export CSV, archivage). Restent : modale à cinq types de contact, fiches professionnels avec documents.",
+        "Conserver les fiches client, projets associés, notes, courriels et suppression/restauration déjà implémentés ; revalider leurs permissions.",
+        "Unifier le répertoire clients, prestataires, employés et administrateurs : filtres, recherche, import/export, doublons et archivage.",
+        "Afficher les photos disponibles et une présence réelle ; garder un état inconnu quand aucune information de présence ne remonte.",
+        "Appliquer la recherche par nom/courriel aux destinataires et copies de tous les documents, avec pastilles et dédoublonnage."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Projets",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Carte géographique, filtres de dates, actions groupées et restauration des filtres livrés. Restent : tags, colonnes configurables, routes URL partageables.",
+        "Livrer vues liste/cartes, recherche titre/client/adresse/référence, filtres client/responsable/étape, tri et menus Ouvrir/Modifier.",
+        "Livrer pagination de 24 projets, création visible et fermeture des menus au clic extérieur ou à Échap.",
+        "Compléter tags, colonnes configurables, affectations par membres, dates du cycle, montants, sélection multiple et export du périmètre filtré.",
+        "Conserver les filtres et la position au retour du dossier ; tester changement de client/projet sans perte du contexte."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Soumissions et gabarits",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Verifier tout le parcours : vierge, gabarit, duplication existante, CSV, brouillon incomplet, reprise, modification et version.",
+        "Compléter groupes, catégories, tâches, descriptions, unités, quantité, matériaux, main-d’œuvre, codes de coût et catalogue réutilisable.",
+        "Verifier majoration ligne/globale, rabais, taxes, arrondis et prévention du cumul involontaire ; distinguer clairement majoration et marge.",
+        "Implémenter déplacement des blocs avec sauvegarde et alternative clavier/tactile, duplication et actions multiples.",
+        "Verifier personnalisation du document : prix par ligne/catégorie, quantités, coûts, marge, prix unitaire, couverture et notes internes exclues.",
+        "Verifier échéancier de paiement, calendrier chantier, validité, conditions, pièces jointes, aperçu PDF, retour édition, envoi et historique."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Contrats et signatures",
+      "priority": "P0",
+      "status": "À revalider",
+      "items": [
+        "Retester création/enregistrement du contrat projet et phase, client ou prestataire, brouillon incomplet, reprise et erreurs compréhensibles.",
+        "Verifier références, parties, périmètre, lignes, dates, conditions, paiement, annexes, aperçu et conversion depuis la soumission.",
+        "Contrôler signature de chaque partie autorisée, consentement, horodatage, verrouillage du document signé et version après modification.",
+        "Distinguer la signature dessinée disponible d’une intégration de signature avec certificat et preuves immuables ; vérifier cette dernière avant toute promesse."
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Ordres de changement",
+      "priority": "P0",
+      "status": "À revalider",
+      "items": [
+        "Vérifier création depuis contrat ou phase, lignes détaillées, impact montant/délai, brouillon, approbation/refus, signature et PDF.",
+        "Verifier passage en facture et prevention des doubles facturations ; différencier signé, facturé et payé.",
+        "Unifier les extras simplifiés du cockpit et les documents de changement pour éviter deux sources de vérité."
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Factures et paiements clients",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Verifier création depuis soumission, contrat, changement ou dépense, sélection des tâches et montants déjà facturés.",
+        "Compléter listes factures/paiements, filtres date/client/projet/statut, exports, soldes et dates envoi/ouverture.",
+        "Conserver paiements transactionnels et idempotents ; tester paiements partiels, annulation/correction auditée, reçus et relances."
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Dépenses et fournisseurs",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Factures, crédits et paiements fournisseur par projet livrés avec contrôles serveur. Reste : vue entreprise des dépenses à quatre familles et transfert par courriel.",
+        "Séparer dépenses, factures fournisseur et crédits fournisseur, avec numéros, dates, fournisseur, projet, catégories et justificatifs.",
+        "Ajouter imputation des crédits et paiements, soldes fournisseurs, rapprochement et références aux commandes.",
+        "Construire collecte des justificatifs par courriel avec contrôle des pièces jointes et dédoublonnage ; vérifier intégration comptable."
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Demandes de prix",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Réponses multiples comparables et attribution unique livrées. Reste : envoi réel aux fournisseurs (service courriel).",
+        "Relier projet, soumission et catégories ; choisir prestataires concernés, pièces jointes, date limite et message.",
+        "Construire envoi réel, suivi livraison/ouverture, réponses, comparaison et attribution ; un statut choisi manuellement ne prouve pas un envoi.",
+        "Ajouter recherche, filtres, colonnes, actions multiples et conversion en commande."
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Bons de commande",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Réception partielle, facturation liée, alerte de dépassement livrées. Reste : PDF de bon de commande et envoi.",
+        "Compléter lignes, quantités, taxes, fournisseur, adresse de livraison, dates, numéro, conditions et PDF.",
+        "Relier demande de prix, approbation, envoi, réception partielle/complète, facture fournisseur, crédit et paiement.",
+        "Distinguer montant demandé, brouillon, engagé, facturé et payé dans les totaux et le budget."
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Budget et comptabilité",
+      "priority": "P0",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Budget par code de coût original/révisé/engagé/réalisé/reste livré et exportable. Reste : intégration des dépenses globales par code.",
+        "Confronter budget, coûts réels, commandes, changements, temps et factures sans compter deux fois la même dépense.",
+        "Verifier vues entreprise/année/client/projet et périodes personnalisées ; cohérence graphique, totals et export.",
+        "Verifier ZIP comptable avec justificatifs, dossiers incomplets, téléchargement et envoi réel à plusieurs destinataires/copies.",
+        "Valider les mêmes droits et le même périmètre sur PDF, ZIP, courriel et écran."
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Catalogues, coûts et sélections",
+      "priority": "P1",
+      "status": "À construire",
+      "items": [
+        "Créer bibliothèque centrale persistante : gabarits, mes soumissions, catalogue, catégories, codes de coût, échéanciers, tâches, produits et sélections.",
+        "Ajouter import/export contrôlé, recherche, unités, coûts matériaux/main-d’œuvre, majoration et édition en ligne.",
+        "Permettre sauvegarde/réutilisation des gabarits et échéanciers ; ne pas modifier rétrospectivement les documents déjà émis.",
+        "Compléter choix client, options, allocations, approbation, impact budget et historique."
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Fichiers",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Passer des dossiers virtuels aux dossiers persistants : arborescence, fil d’Ariane, renommage, déplacement, tri et sélection multiple.",
+        "Ajouter versions, miniatures, aperçu PDF multipage, téléchargement groupé, suppression réversible et limites de volume explicites.",
+        "Verifier partage au client concerné et prestataires autorisés ; aucune fuite aux autres clients."
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Communications et courriels",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Distinguer conversations client, prestataires, équipe interne, demandes de devis, notes et historique des courriels par projet.",
+        "Contrôler participants, pièces jointes, lecture, reprise des brouillons et rafraîchissement entre appareils.",
+        "Vérifier les réponses entrantes, envois Resend, DNS, échecs, relances et états de livraison ; aucune réussite simulée."
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Notifications",
+      "priority": "P1",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Événements métier, matrice par rôle et famille livrés. Restent : courriel/SMS/push (services absents).",
+        "Conserver la cloche et le panneau translucide ; ajouter historique, lu/non lu, lien vers l’objet et préférences.",
+        "Déclencher les notifications depuis les événements réels : message, affectation, validation, signature, paiement et échéance.",
+        "Verifier synchronisation entre appareils et dédoublonnage."
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Équipe et droits",
+      "priority": "P0",
+      "status": "À revalider",
+      "items": [
+        "Verifier invitation, retrait/restauration, rôle et affectation ; permissions serveur sur projet, phase, document et médias.",
+        "Limiter le sélecteur de partage au client du projet et aux prestataires autorisés ; tester accès direct aux liens et téléchargements.",
+        "Compléter métier, horaires, coût horaire, préférences, pointage et import comptable sans statut connecté fictif."
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Feuilles de temps",
+      "priority": "P0",
+      "status": "Lot en validation",
+      "items": [
+        "Corriger totaux et approbation limités aux sept jours affichés, y compris week-end ; repasser en brouillon après modification.",
+        "Adapter la feuille aux petits écrans en cartes lisibles par personne, sans tableau débordant.",
+        "Compléter vue globale employé/catégorie, filtre période/personne, heures facturables, pauses, pointage et export.",
+        "Protéger les taux différents et les entrées multiples d’une journée ; conserver l’historique des approbations."
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Journal et rapports",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Distinguer journal chantier du journal comptable et de la feuille de temps.",
+        "Compléter rapport daté : travaux, équipe, météo, photos, matériaux, blocages, retards, commentaires et partage.",
+        "Ajouter filtres projet/employé/date, vues développées/réduites et PDF/export."
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Calendrier, tâches et phases",
+      "priority": "P1",
+      "status": "À compléter",
+      "items": [
+        "Verifier vues jour/semaine/mois/liste/planning, navigation, aujourd’hui, filtres projet/membre/type et jours ouvrés.",
+        "Compléter dépendances, progression, déplacement/redimensionnement, assignation et contraintes de dates.",
+        "Verifier collisions, disponibilités, buffers, propositions de rendez-vous, réponses et rappels réellement envoyés.",
+        "Verifier mobile, changement de mois, événements longs, fuseaux horaires et cohérence entre agenda global et projet."
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Réglages et assistance",
+      "priority": "P2",
+      "status": "Lot en validation",
+      "items": [
+        "8 oct. : Neuf sections de réglages avec sauvegarde explicite et brouillon conservé en cas d’erreur. Restent : logo téléversé, signature riche, connexions d’intégration.",
+        "Organiser entreprise, marque/PDF, profil, langue, defaults projet, modèles courriels, portail équipe et intégrations.",
+        "Compléter coordonnées, licence, taxes, assurance/expiration, jours ouvrés/congés et préférences.",
+        "Adapter support, aide contextuelle, retours utilisateurs et historique des mises à jour au fonctionnement MG Pro."
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Atouts MG Pro et fiabilité",
+      "priority": "P0",
+      "status": "À préserver et revalider",
+      "items": [
+        "Préserver visite guidée, relevés, photos, notes vocales/dictée, médias hors ligne, devis pendant visite et plans 2D/3D.",
+        "Verifier brouillons serveur et récupération hors ligne, sessions, autosauvegarde, conflits de versions et synchronisation sans perte de saisie.",
+        "Tester grands volumes, deux sessions simultanées, isolation des rôles, opérations répétées et erreurs réseau."
+      ]
+    },
+    {
+      "id": 22,
+      "title": "Migration Billdr",
+      "priority": "P2",
+      "status": "Différée",
+      "items": [
+        "Inventorier toutes les entités, fichiers, versions, liens, statuts et soldes avant transfert.",
+        "Créer correspondances d’identifiants, import relançable, rapport erreurs/doublons et rapprochement des totaux/documents.",
+        "Effectuer sauvegarde et import de test ; obtenir concordance et validation fonctionnelle avant bascule des données réelles."
+      ]
+    }
+  ],
+  "delivered": [
+    "Mobile : barre fixe en bas avec les 5 actions les plus utiles (Accueil, Projets, Commencer une visite, Créer un devis, Plus) ; « Plus » ouvre facture, dépense, tâche, client, calendrier, santé, décisions, factures et le menu complet. Prestataires et clients ont leur propre barre.",
+    "Repris de Follow My Future et adapté : Santé des projets (score, statut, avancement réel vs attendu, budget, marge, alertes échéancier/budget/client/tâches/encaissement, échéances à 14 jours, regroupement par client ou responsable).",
+    "Décisions des clients : approbations, signatures, choix et paiements en attente, triés par ancienneté, avec relance limitée à une fois par 20 h ; demandes de modification envoyées par les clients depuis leur espace, avec statut et réponse.",
+    "Facturation : statut calculé (Émise, Vue, Partiellement payée, Payée, En retard), lien client public sans compte (consulter, télécharger le PDF, payer), lien de paiement en ligne (Stripe/Square/PayPal fourni par l’entreprise), instructions de paiement, rappels manuels et automatiques (J-3, J0, J+7… configurables) via la tâche quotidienne.",
+    "Portail client : avancement par phases, rubrique Demandes ; rapport hebdomadaire préparé automatiquement à partir de la semaine (réalisé, en cours, prochaines étapes, en attente du client), publié seulement après relecture.",
+    "Style : structure Follow My Future (en-têtes, bandeau de statistiques, puces, cartes, pastilles d’état) en blanc et vert MG Pro.",
+    "Fournisseurs & coûts (entreprise) : dépenses, factures, crédits, paiements et bons de tous les projets, filtres projet/fournisseur/statut/période, colonnes au choix, export ; le coût n’additionne jamais un paiement ni un bon.",
+    "Fichiers : Tous les fichiers → Mes projets → projet → neuf dossiers système (Bons de commande, Demandes de soumission, Dépenses, Factures, Journal, Ordres de changement, Partagé avec le client, Rapports de construction, Soumissions) ; partager, déplacer, supprimer avec confirmation ; documents générés protégés.",
+    "Répertoire : modale « Ajouter un contact » à cinq types, Confirmer désactivé sans choix.",
+    "Tâches du projet : filtres statut, source et assigné ; ajout depuis Personnalisée, Soumission, Ordre de changement, Catalogue, Gabarit ou Échéancier avec aperçu et sans doublon. Rien n’est créé à l’ouverture du menu.",
+    "Assistant (lecture seule, données calculées de MG Pro, SDK Anthropic officiel) avec état « non configuré » clair ; routines (comptes clients/fournisseurs, retards, projets actifs, à payer, pipeline) exécutées explicitement avec historique.",
+    "Gantt : zoom, Aujourd’hui, jours non ouvrés grisés, dépendances dessinées, glisser pour déplacer, bord droit pour la durée, flèches et Maj+flèches au clavier, annulation, groupes imbriqués repliables.",
+    "Heures : pointage mobile pour les prestataires (début/fin/pause, quart conservé sur l’appareil jusqu’à l’envoi, chevauchements refusés, taux invisibles), vue par catégorie des heures approuvées, clôture de période verrouillant les saisies.",
+    "Adresses : chaque rubrique et chaque dossier ouvert ont une adresse (#rubrique/identifiant) ; lien direct, rechargement et bouton Retour du navigateur fonctionnent, avec contrôle des droits.",
+    "Fournisseurs : plusieurs réponses par demande de prix, comparaison (écart au plus bas, délai, validité), attribution unique vers un bon brouillon, réception partielle par ligne, factures fournisseur liées au bon, crédits appliqués, paiements limités au solde et rapprochement bancaire. Contrôle serveur du grand livre à chaque enregistrement.",
+    "Budget par code de coût : original, changements approuvés, révisé, bons engagés, engagé non facturé, factures, crédits, main-d’œuvre approuvée, réalisé, payé, à payer, prévision et reste à engager ; export CSV. Un bon brouillon n’engage rien, une facture remplace la part engagée de son bon, un paiement ne crée pas de coût.",
+    "Prix : choix explicite « marge de profit » (coût ÷ (1 − marge)) ou « majoration » (coût × (1 + majoration)) par ligne et globalement, dans un moteur décimal unique utilisé par l’éditeur, les totaux, la projection client et le PDF. Marge ≥ 100 % refusée côté serveur. Les anciennes lignes gardent exactement leur prix.",
+    "Réglages : image de marque, paramètres de projets (types, échéancier de paiement à 100 %, validité, retenue, semaine de travail, jours fériés, unités), préférences IA, treize courriels par défaut avec variables sûres et aperçu, questions du journal mobile, matrice des notifications par rôle, état réel des services et retours d’assistance.",
+    "Les courriels de documents utilisent les modèles enregistrés ; l’analyse IA reçoit les préférences ; les échéanciers utilisent la semaine et les fériés des réglages.",
+    "Notifications métier : changements de statut, publications (sélections, rapports, journal, échéancier), bons marqués envoyés, factures fournisseur et heures approuvées ; filtrage par rôle et famille. Un statut changé à la main n’est jamais présenté comme un courriel envoyé.",
+    "Portail client en neuf rubriques (vue d’ensemble, contrats, soumissions, sélections, factures, rapports, fichiers, échéancier, journal) construit uniquement à partir des données filtrées par le serveur ; publication explicite de l’échéancier sans les responsables.",
+    "Projets : carte géographique (tuiles OpenStreetMap, coordonnées obtenues par géolocalisation explicite et effacées si l’adresse change), filtres de dates à huit préréglages annulables, sélection, export CSV et changement de statut groupé confirmé, « 0 résultat », filtres restaurés au retour.",
+    "Répertoire unifié : clients, professionnels sans accès logiciel, employés et administrateurs ; doublons signalés sans fusion automatique, import CSV prévisualisé (lignes invalides et doublons écartés), export protégé contre les formules, archivage/restauration.",
+    "68 tests automatisés (25 nouveaux) et compilation de production réussis.",
+    "Projets : vues liste/cartes, recherche, filtres client et responsable, tri, étapes et pagination par 24.",
+    "Feuille de temps : totaux et approbation limités à la semaine choisie, sept jours inclus, présentation mobile. Les journées à plusieurs saisies restent protégées contre l’écrasement de leurs taux.",
+    "Devis et contrats : prix matériaux + main-d’œuvre avant taxes, marge de profit par ligne, notes publiques masquables, notes équipe en jaune et notes administration retirées côté serveur pour les autres rôles.",
+    "Carnet : dessin au doigt, stylet ou souris dans les visites et documents, annulation du dernier trait, sauvegarde avec le document et export du croquis en PDF.",
+    "Journal : rapport partageable, prise de photo ou ajout depuis la galerie, choix d’accès des nouvelles photos et conservation via la file de transfert existante.",
+    "Bibliothèque de dix rubriques : gabarits, tâches, produits, catégories, codes de coût et échéanciers réutilisables.",
+    "Demandes de prix et bons de commande détaillés ; attribution en bon brouillon, suivi de réception et exports.",
+    "Échéancier liste/Gantt/calendrier avec gabarits, dépendances et contrôle des cycles ; feuille de temps séparée du journal.",
+    "Rubriques projet dédiées aux factures, dépenses, sélections client et rapports publiables.",
+    "Centre de notifications avec événements autorisés et lectures persistantes par utilisateur.",
+    "Projection des prix client corrigée : coûts et totaux internes masqués, prix de vente et taxes conservés.",
+    "43 tests automatisés réussis et compilation de production réussie.",
+    "Cloche et centre de notifications unifiés : mêmes événements, compteurs et lectures synchronisées."
+  ],
+  "limits": [
+    "Services non configurés en production (vérifié le 8 octobre, noms de variables seulement) : RESEND_API_KEY et MAIL_FROM (courriels), ANTHROPIC_API_KEY (IA), NEXT_PUBLIC_SITE_URL. Aucun envoi réel ni analyse IA ne sont certifiés.",
+    "La transcription automatique de l’écriture manuscrite et la reconstruction automatique d’un plan 2D coté ne sont pas implémentées.",
+    "Recette multirôle avec au moins deux clients et deux prestataires réels non réalisée : l’isolation est couverte par des tests unitaires de filtrage serveur, pas par des comptes Supabase de test.",
+    "Migration Billdr non commencée (exports autorisés, mapping, simulation, rapprochement à prévoir). Incidents d’audit DL-0043 et tâche vide conservés dans la passation.",
+    "Encore absents : exécution automatique planifiée des routines (aucun planificateur serveur), connexions QuickBooks/Zapier, SMS et push, OCR du carnet et plan 2D automatique, import du relevé bancaire.",
+    "Rappels automatiques et routines planifiées : ajouter CRON_SECRET dans Vercel (la tâche quotidienne refuse de tourner sans lui) et configurer Resend. Paiement par carte intégré (Stripe Connect comme Follow My Future) non branché : MG Pro affiche le lien de paiement fourni par l’entreprise et ne marque jamais une facture payée automatiquement."
+  ]
+}

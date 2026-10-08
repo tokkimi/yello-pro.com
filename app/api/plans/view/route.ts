@@ -1,0 +1,9 @@
+import {createHash} from 'node:crypto';
+import {db} from '@/lib/supabase';
+import {sameOrigin} from '@/lib/access';
+import {planSchema} from '@/lib/plan';
+async function shared(token:string){if(!/^[a-f0-9]{64}$/.test(token))return null;return (await (await db()).from('plan_shares').select('*').eq('token_hash',createHash('sha256').update(token).digest('hex')).gt('expires_at',new Date().toISOString()).maybeSingle()).data;}
+export async function GET(req:Request){const r=await shared(new URL(req.url).searchParams.get('token')||'');if(!r)return Response.json({error:'Invitation expirée ou invalide.'},{status:404});return Response.json({plan:planSchema.parse(r.plan),version:r.version},{headers:{'Cache-Control':'no-store','Referrer-Policy':'no-referrer'}});}
+export async function POST(req:Request){if(!sameOrigin(req))return Response.json({error:'Origine refusée'},{status:403});const input=await req.json();const r=await shared(String(input.token||''));if(!r)return Response.json({error:'Invitation expirée ou invalide.'},{status:404});const parsed=planSchema.safeParse(input.plan);if(!parsed.success)return Response.json({error:'Plan invalide.'},{status:400});const old=planSchema.parse(r.plan);const candidate=parsed.data;
+ // Only decorative choices may change. Never accept geometry, pricing or arbitrary record data.
+ const plan={...old,style:candidate.style,rooms:old.rooms.map(room=>{const c=candidate.rooms.find(x=>x.id===room.id);return c?{...room,floor:c.floor,wall:c.wall,furniture:c.furniture,floorFinish:c.floorFinish,wallFinish:c.wallFinish}:room}),revision:old.revision+1};const {data,error}=await (await db()).from('plan_shares').update({plan,version:r.version+1}).eq('id',r.id).eq('version',input.version).select('version').maybeSingle();if(error||!data)return Response.json({error:'Les choix ont changé. Rechargez pour éviter de les écraser.'},{status:409});return Response.json({plan,version:data.version});}

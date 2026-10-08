@@ -1,0 +1,4 @@
+'use client';
+import {useState} from 'react';
+import {createBrowserClient} from '@supabase/ssr';
+export default function Account(){const [message,setMessage]=useState('');return <main className="legal-page"><h1>Définir mon mot de passe</h1><form onSubmit={async e=>{e.preventDefault();const password=String(new FormData(e.currentTarget).get('password'));const supabase=createBrowserClient(process.env.NEXT_PUBLIC_SUPABASE_URL!,process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);const {error}=await supabase.auth.updateUser({password});if(error)setMessage('Le lien a expiré ou le mot de passe est invalide. Demandez une nouvelle invitation.');else location.href='/admin';}}><label>Nouveau mot de passe<input name="password" type="password" required minLength={12} autoComplete="new-password"/></label><button className="btn primary">Enregistrer</button><p role="status">{message}</p></form></main>}

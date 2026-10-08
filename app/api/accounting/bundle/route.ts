@@ -1,0 +1,24 @@
+import {NextResponse} from 'next/server';
+import {z} from 'zod';
+import {identity,db} from '@/lib/supabase';
+import {sameOrigin} from '@/lib/access';
+import {accountingBundle,BundleFilter} from '@/lib/accounting-bundle';
+import {defaults,RecordItem} from '@/lib/model';
+import {ccSchema,recipients} from '@/lib/email';
+
+const filterSchema=z.object({from:z.iso.date(),to:z.iso.date(),scope:z.enum(['company','client','partner']),client_id:z.uuid().optional(),project_id:z.uuid().optional(),partner_id:z.uuid().optional()});
+function checked(value:unknown){const parsed=filterSchema.safeParse(value);if(!parsed.success)return null;const filter=parsed.data;if(filter.from>filter.to||filter.scope==='client'&&!filter.client_id||filter.scope==='partner'&&!filter.partner_id||filter.scope==='company'&&(filter.client_id||filter.partner_id)||filter.scope==='client'&&filter.partner_id||filter.scope==='partner'&&(filter.client_id||filter.project_id))return null;return filter;}
+async function build(filter:BundleFilter){
+ const {data,error}=await (await db()).from('records').select('*').order('created_at',{ascending:false}).limit(5000);if(error)throw new Error('Lecture comptable impossible.');
+ const records=(data||[]) as RecordItem[];
+ if(filter.scope==='client'&&!records.some(record=>record.kind==='client'&&record.id===filter.client_id))throw new Error('Client introuvable.');
+ if(filter.project_id&&!records.some(record=>record.kind==='project'&&record.id===filter.project_id&&record.client_id===filter.client_id))throw new Error('Projet incompatible avec ce client.');
+ const partner=filter.partner_id?(await (await db()).from('profiles').select('id,name').eq('id',filter.partner_id).eq('role','worker').maybeSingle()).data:undefined;
+ if(filter.scope==='partner'&&!partner)throw new Error('Prestataire introuvable.');
+ const settings=(await (await db()).from('records').select('data').eq('kind','settings').limit(1).maybeSingle()).data?.data||defaults;
+ const bytes=await accountingBundle(records,filter,settings,partner||undefined,async document=>{const result=await (await db()).storage.from('documents').download(document.data.path);if(result.error||!result.data)throw new Error('Un justificatif est inaccessible : '+String(document.data.name||document.id));return new Uint8Array(await result.data.arrayBuffer());});
+ if(bytes.length>22*1024*1024)throw new Error('Le dossier dépasse la taille autorisée pour un envoi. Choisissez une période plus courte.');
+ return bytes;
+}
+export async function GET(req:Request){const user=await identity();if(user?.role!=='admin')return NextResponse.json({error:'Accès refusé.'},{status:403});const filter=checked(Object.fromEntries(new URL(req.url).searchParams));if(!filter)return NextResponse.json({error:'Sélectionnez une période et un dossier valides.'},{status:400});try{const bytes=await build(filter);return new Response(new Uint8Array(bytes),{headers:{'Content-Type':'application/zip','Content-Disposition':`attachment; filename="yello-pro-comptabilite-${filter.from}-${filter.to}.zip"`,'Cache-Control':'private, no-store'}})}catch(error){return NextResponse.json({error:(error as Error).message},{status:400})}}
+export async function POST(req:Request){if(!sameOrigin(req))return NextResponse.json({error:'Origine refusée.'},{status:403});const user=await identity();if(user?.role!=='admin')return NextResponse.json({error:'Accès refusé.'},{status:403});if(!process.env.RESEND_API_KEY||!process.env.MAIL_FROM)return NextResponse.json({error:'Le service de courriel doit être activé.'},{status:503});const input=await req.json().catch(()=>null);const filter=checked(input);const recipientsParsed=ccSchema.safeParse(input?.emails);if(!filter||!recipientsParsed.success||!recipientsParsed.data.length)return NextResponse.json({error:'Période, dossier ou destinataires invalides.'},{status:400});try{const bytes=await build(filter);const emails=recipientsParsed.data;const response=await fetch('https://api.resend.com/emails',{method:'POST',headers:{Authorization:`Bearer ${process.env.RESEND_API_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({from:process.env.MAIL_FROM,...recipients(emails[0],emails.slice(1)),subject:`Yello Pro — Dossier comptable ${filter.from} au ${filter.to}`,text:'Bonjour,\n\nVous trouverez en pièce jointe le dossier comptable demandé et ses justificatifs disponibles.\n\nYello Pro',attachments:[{filename:`yello-pro-comptabilite-${filter.from}-${filter.to}.zip`,content:bytes.toString('base64')}]})});if(!response.ok)return NextResponse.json({error:'Le service de courriel n’a pas confirmé l’envoi.'},{status:502});await (await db()).from('audit_log').insert({actor_id:user.id,action:'accounting_bundle_sent',details:{scope:filter.scope,from:filter.from,to:filter.to,recipients:emails}});return NextResponse.json({ok:true})}catch(error){return NextResponse.json({error:(error as Error).message},{status:400})}}

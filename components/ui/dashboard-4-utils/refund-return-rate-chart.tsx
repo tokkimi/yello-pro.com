@@ -1,0 +1,6 @@
+'use client';
+import {Pie,PieChart,ResponsiveContainer,Cell,Tooltip} from 'recharts';
+import {money} from '@/lib/model';
+import {useDashboard} from './context';
+// The template's rate card is adapted to invoice collection for Yello Pro.
+export function RefundReturnRateChart(){const {stats}=useDashboard();const rate=stats.billed?Math.round(stats.paid/stats.billed*100):0;const values=stats.billed?[{name:'Encaissé',value:stats.paid},{name:'À encaisser',value:stats.outstanding}]:[{name:'Aucune facture',value:1}];return <article className="dashboard4-card dashboard4-collection"><header><div><h3>Encaissement</h3><p>Part des factures réglée</p></div></header><div className="dashboard4-ring"><ResponsiveContainer width="100%" height="100%"><PieChart><Pie data={values} dataKey="value" nameKey="name" innerRadius="70%" outerRadius="88%" startAngle={90} endAngle={-270} stroke="none" isAnimationActive={false}>{values.map((value,index)=><Cell key={value.name} fill={stats.billed&&index===0?'#303530':'#e1e5de'}/>)}</Pie>{stats.billed>0&&<Tooltip formatter={value=>money(Number(value))}/>}</PieChart></ResponsiveContainer><strong>{stats.billed?`${rate}%`:'—'}<small>{stats.billed?'encaissé':'Aucune facture'}</small></strong></div><footer><span>Restant à recevoir</span><b>{money(stats.outstanding)}</b></footer></article>}

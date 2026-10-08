@@ -1,0 +1,9 @@
+.git/
+node_modules/
+.next/
+.vercel/
+.env*
+.owner-access.txt
+*.tsbuildinfo
+test-results/
+.sites-runtime/
