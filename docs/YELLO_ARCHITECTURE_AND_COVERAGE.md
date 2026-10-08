@@ -29,3 +29,8 @@ Sources : https://support.atlassian.com/trello/docs/using-trello/ ; https://supp
 
 ## Conditions de lancement commercial
 Configurer une nouvelle base avec migrations 001 à 007, puis YELLO_DATABASE_READY=true. Configurer Stripe avec quatre offres mensuelles/annuelles et un webhook signé. Ne pas activer la vente sans ces contrôles, une recette d’isolation et une validation mobile. Ne jamais annoncer tous les outils Trello/Notion comme disponibles avant la recette.
+
+## 8 octobre : espace vierge et continuité
+Aucun dossier de démonstration prérempli. La navigation globale passe par une bille jaune ouvrant la fenêtre de tous les outils. L’historique affiche les versions avant/après aux administrateurs autorisés. Les rafraîchissements sont sérialisés, sans cache, au retour de visibilité/connexion et toutes les cinq secondes ; une réponse ancienne ne remplace pas une version plus récente. Ce mécanisme nécessite la base réelle : le mode aperçu reste temporaire et ne simule pas de sauvegarde cloud.
+
+La console propriétaire liste entreprises, comptes et offres. YELLO_PLATFORM_ADMIN_IDS contient uniquement les UUID Auth du propriétaire vérifié ; ce rôle permet de tester tous les outils sans les limites de création par abonnement. Il ne désactive ni les contrôles de sécurité, ni les limites techniques de stockage. Ne jamais exposer ce privilège à un administrateur client.
