@@ -8,7 +8,7 @@ row(3,'client',{name:'Sophie Dubois',email:'sophie@example.com',phone:'450-555-0
 row(11,'project',{title:'Une nouvelle cuisine à Sainte-Rose',service:'Cuisine',status:'En cours',start:'2026-09-07',end:'2026-10-09',budget:42500,notes:'Cuisine ouverte avec îlot central et comptoir en quartz.',address:'Sainte-Rose, Laval',geo:{lat:45.6106,lon:-73.7866,label:'Sainte-Rose, Laval (centre du secteur, démonstration)',source:'demo'}},1),
 row(12,'project',{title:'Salle de bain · Montréal',service:'Salle de bain',status:'En cours',start:'2026-09-10',end:'2026-09-30',budget:24800,address:'Montréal',geo:{lat:45.5019,lon:-73.5674,label:'Montréal (centre-ville, démonstration)',source:'demo'}},2),
 row(13,'project',{title:'Aménagement du sous-sol',service:'Sous-sol',status:'Planifié',start:'2026-10-05',end:'2026-11-02',budget:38000,address:'Blainville'},3),
-row(21,'task',{title:'Valider le choix du comptoir',status:'À faire',due:'2026-09-16',assignee:'Mohamed',priority:'Haute',description:'Présenter les échantillons et confirmer la teinte.'},1,11),
+row(21,'task',{title:'Valider le choix du comptoir',status:'À faire',due:'2026-09-16',assignee:'Alex Demo',priority:'Haute',description:'Présenter les échantillons et confirmer la teinte.'},1,11),
 row(22,'task',{title:'Installer les armoires basses',status:'En cours',due:'2026-09-18',assignee:'Équipe chantier',priority:'Normale',description:'Vérifier le niveau, les alignements et les réservations.'},1,11),
 row(23,'task',{title:'Vérifier l’étanchéité de la douche',status:'À valider',due:'2026-09-15',assignee:'Équipe chantier',priority:'Haute',completion_note:'Test réalisé. À contrôler avant pose des carreaux.'},2,12),
 row(24,'task',{title:'Protection des surfaces',status:'Validée',due:'2026-09-10',assignee:'Équipe chantier',priority:'Normale'},1,11),
@@ -20,7 +20,7 @@ row(52,'quote',{number:'DEV-2026-002',title:'Salle de bain',status:'Brouillon',d
 row(61,'invoice',{number:'FAC-2026-001',title:'Acompte — cuisine',status:'Émise',date:'2026-09-12',due:'2026-09-26',lines:[{description:'Acompte de démarrage',quantity:1,unit:'forfait',price:10000}],tps:5,tvq:9.975,paid:0},1,11),
 row(71,'expense',{title:'Matériaux de protection',supplier:'Fournisseur démo',date:'2026-09-12',category:'Matériaux',net:450,tps:22.5,tvq:44.89,total:517.39,status:'Payée'},1,11),
 row(81,'message',{body:'Bonjour, est-ce que nous pouvons voir les échantillons de quartz lors de la prochaine visite ?',sender:'Camille Laurent',visibility:'client'},1,11),
-row(82,'message',{body:'Bonjour Camille, oui, nous les apporterons à la visite de mercredi.',sender:'Mohamed',visibility:'client'},1,11),
+row(82,'message',{body:'Bonjour Camille, oui, nous les apporterons à la visite de mercredi.',sender:'Alex Demo',visibility:'client'},1,11),
 row(91,'settings',defaults)
 ];
-export const demoUser={id:id(100),name:'Mohamed Ghamraoui',email:'',role:'admin' as const,client_id:null};
+export const demoUser={id:id(100),name:'Alex Demo Ghamraoui',email:'',role:'admin' as const,client_id:null};

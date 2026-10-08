@@ -21,8 +21,8 @@ Sources : https://support.atlassian.com/trello/docs/using-trello/ ; https://supp
 | Visites, photos, notes vocales, devis et contrats | Source MG conservée | Recette de chaque parcours |
 | Portail client et permissions | Source MG conservée + isolation entreprise | Deux entreprises et quatre comptes distincts |
 | Abonnement progressif | Catalogue + interface + endpoint Stripe | Configuration Stripe, webhook et paiement sandbox |
-| Vues Trello et Notion | Comparaison initiale | Inventaire complet cartes/table/chronologie/galerie |
-| Sous-tâches, champs personnalisés, relations, modèles | À approfondir | Implémentation puis recette |
+| Vues Trello et Notion | Tableau, liste et échéances de tâches ajoutés ; filtre responsable, tri et recherche | Chronologie, galerie et vues enregistrées |
+| Listes de contrôle, étiquettes et dépendances | Ajoutés ; validation anti-boucle et même projet | Sous-tâches hiérarchiques, champs personnalisés et modèles |
 | Automatisation par déclencheurs et actions | Routines MG conservées | Éditeur de règles complet et historique |
 | Notes en blocs, recherche et liens entre documents | À approfondir | Éditeur et permissions |
 | Migration/import/export | Données MG non copiées | Import explicite et contrôles |
